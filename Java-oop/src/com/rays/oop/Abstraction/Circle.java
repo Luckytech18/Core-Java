@@ -1,4 +1,6 @@
-package com.rays.oop.polyMorphism;
+package com.rays.oop.Abstraction;
+
+
 
 public class Circle extends Shape {
 	private int radius;
@@ -10,10 +12,11 @@ public class Circle extends Shape {
 	public void setRadius(int radius) {
 		this.radius = radius;
 	}
-
 	@Override
 	public double area() {
-		double area = Math.PI * radius * radius;
+double area =  Math.PI * radius * radius;
 		return area;
 	}
+
+	
 }

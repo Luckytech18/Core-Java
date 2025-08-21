@@ -9,7 +9,6 @@ public class TestPerson {
 		BuisnessMan b = new BuisnessMan();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
 		b.setName("Lucky");
 		b.setAddress("Gwalior");
 		b.setDob(sdf.parse("2005-01-18"));
@@ -28,37 +27,27 @@ public class TestPerson {
 		d.setAddress("Indore");
 		d.setDob(sdf.parse("2002-01-18"));
 		d.setRegistrationNo("21");
-		
+
 		System.out.println("Name :" + d.getName());
 		System.out.println("Address : " + d.getAddress());
 		System.out.println("Date:" + sdf.format(d.getDob()));
 		System.out.println("Registration :" + d.getRegistrationNo());
-		
+
 		System.out.println("----------Student---------");
-		
+
 		Student s = new Student();
-		
+
 		s.setName("Jayesh");
 		s.setDob(sdf.parse("2003-02-03"));
 		s.setAddress("Gwalior");
 		s.setMarks(55);
 		s.setRollno("44");
-		
+
 		System.out.println("Name :" + s.getName());
 		System.out.println("Address : " + s.getAddress());
 		System.out.println("Date:" + sdf.format(s.getDob()));
 		System.out.println("Roll no:" + s.getRollno());
-		System.out.println("Marks:"+ s.getMarks());
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
+		System.out.println("Marks:" + s.getMarks());
 
 	}
 }

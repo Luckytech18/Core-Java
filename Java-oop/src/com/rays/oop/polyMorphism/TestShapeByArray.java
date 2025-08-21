@@ -5,14 +5,14 @@ public class TestShapeByArray {
 		Shape[] s = new Shape[3];
 		
 		s[0] = new Triangle();
-		s[1] = new circle();
+		s[1] = new Circle();
 		s[2] = new Rectangle();
 		
 		Triangle t = (Triangle) s[0];
 		t.setBase(5);
 		t.setHeight(10);
 		
-		circle c =(circle)s[1];
+		Circle c =(Circle)s[1];
 		c.setRadius(10);
 		
 		Rectangle r = (Rectangle) s[2];
