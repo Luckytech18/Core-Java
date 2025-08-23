@@ -6,7 +6,7 @@ public class TestException {
 		try {
 			String name = "lucky";
 			System.out.println(name.length());
-			System.out.println(name.charAt(5));
+			System.out.println(name.charAt(7));
 		} catch (NullPointerException e) {
 			System.out.println("Exception:" + e.getMessage());
 
