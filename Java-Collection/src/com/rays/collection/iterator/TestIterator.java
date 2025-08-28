@@ -28,7 +28,7 @@ public class TestIterator {
 			System.out.print(o + ",");
 
 		}
-		
+		System.out.println();
 
 		System.out.println("------for each method----");
 
