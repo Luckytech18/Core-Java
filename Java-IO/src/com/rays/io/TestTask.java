@@ -27,7 +27,8 @@ public class TestTask {
 		while (s1 != null) {
 			System.out.println(s1);
 			file2.write(s1);
-			s1 = file.readLine();
+			file2.newLine();
+			s1 = file1.readLine();
 		
 	}
 		file.close();
