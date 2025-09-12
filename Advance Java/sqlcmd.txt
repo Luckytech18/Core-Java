@@ -1,0 +1,223 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database
+    -> show databases
+    -> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database
+show databases
+show databases' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.01 sec)
+
+mysql> create database mydb;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use mydb;
+Database changed
+mysql> create table employee(id int primary key , name varchar(45) , company varchar(45) , salary int );
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_mydb |
++----------------+
+| employee       |
++----------------+
+1 row in set (0.03 sec)
+
+mysql> insert into employee values (1 , 'ram' , 'TCS' , 45000);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from employee;
++----+------+---------+--------+
+| id | name | company | salary |
++----+------+---------+--------+
+|  1 | ram  | TCS     |  45000 |
++----+------+---------+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into employee values(2, 'shyam' , 'Infosys' , 75000) , () , () ^C
+mysql> insert into employee values (2 , 'Lucky' ' supercell') , () , () ;
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql>  insert into employee values(2, 'shyam' , 'Infosys' , 75000) , (3 , 'lucky' , 'supercell' , 75000 ) , (4 , 'ankit' 'krafton' 50000) , (5 , 'amit' , 'deloyd' , 30000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '50000) , (5 , 'amit' , 'deloyd' , 30000)' at line 1
+mysql>  insert into employee values(2, 'shyam' , 'Infosys' , 75000) , (3 , 'lucky' , 'supercell' , 75000 ) , (4 , 'ankit', 'krafton', 50000) , (5 , 'amit' , 'deloyd' , 30000);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++----+-------+-----------+--------+
+| id | name  | company   | salary |
++----+-------+-----------+--------+
+|  1 | ram   | TCS       |  45000 |
+|  2 | shyam | Infosys   |  75000 |
+|  3 | lucky | supercell |  75000 |
+|  4 | ankit | krafton   |  50000 |
+|  5 | amit  | deloyd    |  30000 |
++----+-------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select name from employee;
++-------+
+| name  |
++-------+
+| ram   |
+| shyam |
+| lucky |
+| ankit |
+| amit  |
++-------+
+5 rows in set (0.00 sec)
+
+mysql> select name , company from employee ;
++-------+-----------+
+| name  | company   |
++-------+-----------+
+| ram   | TCS       |
+| shyam | Infosys   |
+| lucky | supercell |
+| ankit | krafton   |
+| amit  | deloyd    |
++-------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select name , company , salary from employee;
++-------+-----------+--------+
+| name  | company   | salary |
++-------+-----------+--------+
+| ram   | TCS       |  45000 |
+| shyam | Infosys   |  75000 |
+| lucky | supercell |  75000 |
+| ankit | krafton   |  50000 |
+| amit  | deloyd    |  30000 |
++-------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> slect * from employee where name = ' lucky ';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'slect * from employee where name = ' lucky '' at line 1
+mysql> select * from employee where name = 'lucky'
+    -> select * from employee where name = 'lucky'
+    -> ^C
+mysql> select * from employee where name = 'lucky';
++----+-------+-----------+--------+
+| id | name  | company   | salary |
++----+-------+-----------+--------+
+|  3 | lucky | supercell |  75000 |
++----+-------+-----------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee where salary > 50000;
++----+-------+-----------+--------+
+| id | name  | company   | salary |
++----+-------+-----------+--------+
+|  2 | shyam | Infosys   |  75000 |
+|  3 | lucky | supercell |  75000 |
++----+-------+-----------+--------+
+2 rows in set (0.01 sec)
+
+mysql> select * from employee where name like 'a%';
++----+-------+---------+--------+
+| id | name  | company | salary |
++----+-------+---------+--------+
+|  4 | ankit | krafton |  50000 |
+|  5 | amit  | deloyd  |  30000 |
++----+-------+---------+--------+
+2 rows in set (0.01 sec)
+
+mysql> delete from employee where name = 'SHYAM';
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into employee values(6, 'juned' , 'DCH' , 15000) , (7 , 'Anant' , 'Vodafone' , 65000 ) , (7 , 'anshit', 'ProPanja', 45000) , (8 , 'Yash' , 'Audi' , 10000);
+ERROR 1062 (23000): Duplicate entry '7' for key 'employee.PRIMARY'
+mysql>  insert into employee values(6, 'juned' , 'DCH' , 15000) , (7 , 'Anant' , 'Vodafone' , 65000 ) , (8 , 'anshit', 'ProPanja', 45000) , (9 , 'Yash' , 'Audi' , 10000);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++----+--------+-----------+--------+
+| id | name   | company   | salary |
++----+--------+-----------+--------+
+|  1 | ram    | TCS       |  45000 |
+|  3 | lucky  | supercell |  75000 |
+|  4 | ankit  | krafton   |  50000 |
+|  5 | amit   | deloyd    |  30000 |
+|  6 | juned  | DCH       |  15000 |
+|  7 | Anant  | Vodafone  |  65000 |
+|  8 | anshit | ProPanja  |  45000 |
+|  9 | Yash   | Audi      |  10000 |
++----+--------+-----------+--------+
+8 rows in set (0.00 sec)
+
+mysql> delete from employee where id > 2;
+Query OK, 7 rows affected (0.02 sec)
+
+mysql> select * from employee;
++----+------+---------+--------+
+| id | name | company | salary |
++----+------+---------+--------+
+|  1 | ram  | TCS     |  45000 |
++----+------+---------+--------+
+1 row in set (0.00 sec)
+
+mysql>  insert into employee values(2, 'shyam' , 'Infosys' , 75000) , (3 , 'lucky' , 'supercell' , 75000 ) , (4 , 'ankit', 'krafton', 50000) , (5 , 'amit' , 'deloyd' , 30000);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++----+-------+-----------+--------+
+| id | name  | company   | salary |
++----+-------+-----------+--------+
+|  1 | ram   | TCS       |  45000 |
+|  2 | shyam | Infosys   |  75000 |
+|  3 | lucky | supercell |  75000 |
+|  4 | ankit | krafton   |  50000 |
+|  5 | amit  | deloyd    |  30000 |
++----+-------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> update employee set company = 'HCL' where id = 5;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++----+-------+-----------+--------+
+| id | name  | company   | salary |
++----+-------+-----------+--------+
+|  1 | ram   | TCS       |  45000 |
+|  2 | shyam | Infosys   |  75000 |
+|  3 | lucky | supercell |  75000 |
+|  4 | ankit | krafton   |  50000 |
+|  5 | amit  | HCL       |  30000 |
++----+-------+-----------+--------+
+5 rows in set (0.00 sec)
